@@ -57,43 +57,13 @@
 <body>
 
     <div class="chat-container">
-        <div class="chat-header">Simple Chat</div>
+        <div class="chat-header">Grammar Correct</div>
         <div class="chat-messages" id="chatMessages"></div>
-        <input type="text" id="chatInput" class="chat-input" placeholder="Type your message...">
-        <button class="generate-button" onclick="sendMessage()">Generate</button>
+        <input type="text" id="message" class="chat-input" placeholder="Type in your sentence...">
+        <button id="generate" class="generate-button">Send</button>
     </div>
 
-    <script>
-        function sendMessage() {
-            const message = document.getElementById('chatInput').value;
-            if (message.trim() === "") return;
-
-            // Display the message in chat
-            const chatMessages = document.getElementById('chatMessages');
-            const newMessage = document.createElement('div');
-            newMessage.textContent = "You: " + message;
-            chatMessages.appendChild(newMessage);
-
-            // Clear the input field
-            document.getElementById('chatInput').value = '';
-
-            // Send the message to a server (replace with your endpoint)
-            fetch('https://example.com/api/chat', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ message: message })
-            })
-            .then(response => response.json())
-            .then(data => {
-                const botMessage = document.createElement('div');
-                botMessage.textContent = "Bot: " + data.reply;
-                chatMessages.appendChild(botMessage);
-            })
-            .catch(error => console.error('Error:', error));
-        }
-    </script>
+    <script src="chat.js"></script>
 
 </body>
 </html>
