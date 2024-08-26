@@ -84,6 +84,7 @@ Transformer was first introduced in the [Attention is All You Need](https://dl.a
     - Tokens are converted into **embeddings**
     - Embeddings are numerical vectors
     - They capture **semantic meaning** of words
+    - The embedding vector and the positional encoding are summed, and the sum is passed to the self-attention layer. By adding the positional encoding, the word order information is preserved and thus the relevance of the position of the word in the sentence is maintained.
   - **Transformer Block**:
     - Processes and transforms input data
     - Each block includes:
@@ -95,6 +96,7 @@ Transformer was first introduced in the [Attention is All You Need](https://dl.a
         - A **feed-forward network**
           - Processes information in one direction, from input to output, without loops or feedback connections
         - Operates on each token independently
+        - Multi-head attention allows AI models to focus on multiple parts of the data simultaneously. The intuition behind multi-headed               attention in the Transformers is that 'each head' learns a different aspect of language. 
         - **Routes information** between tokens
         - **Refines** each token's representation
   - **Output Probabilities**:
@@ -107,6 +109,19 @@ Transformer was first introduced in the [Attention is All You Need](https://dl.a
   - Example: [DeepMind's AlphaFold 2 for protein structure prediction](https://deepmind.com/blog/article/alphafold-a-solution-to-a-50-year-old-grand-challenge-in-biology)
   - Example: [Meta's NLLB for machine translation](https://ai.facebook.com/blog/nllb-200-high-quality-machine-translation/)
 
+Types of Transformers:
+(https://magazine.sebastianraschka.com/p/understanding-encoder-and-decoder) 
+Encoder- and decoder-style architectures use the same self-attention layers to encode word tokens
+
+Encoders
+- Good at classifying text
+- Example: BERT (Bidirectional Encoder Representations from Transformers) is an encoder-only architecture based on the Transformer's encoder module. The BERT model is pretrained on a large text corpus using masked language modeling (illustrated in the figure below) and next-sentence prediction tasks.
+Encoder-Decoders
+
+Decoders:
+- Good at generating new text e.g. answering user queries.
+- Example: GPT (Generative Pre-trained Transformer)
+- 
 ## Experimenting with Transformers
 
 Instead of diving into the deep technical details of transformers, we will use frameworks, tools, and libraries that abstract away the complexities of the computational, mathematical, and statistical work.
