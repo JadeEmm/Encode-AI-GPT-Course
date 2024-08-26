@@ -85,6 +85,7 @@ There are ongoing discussions about evolving these applications to reach [AGI](h
 - Transformers
   - The process of relating tokens to each other in the training data is done by [Transformer](<https://en.wikipedia.org/wiki/Transformer_(machine_learning_model)>) neural networks, which we saw in the previous lesson
   - These transformers use self-attention mechanisms to capture complex relationships between different parts of the input data
+  - Self-attention vs Multi-head attention: Self Attention would be like considering how each word relates to every other word to understand the overall meaning. Multi-head self-attention would be like reading the sentence several times, each time focusing on a different aspect like grammar, word relationships, or sentiment.
   - Transformers are used both in the training phase and in the inference phase of these models to calculate the relations between tokens and generate outputs
 - Inference
   - The process of generating outputs from inputs in a transformer is called inference, and can be accomplished much more quickly for **prompting** than the training phase, since the **patterns** and **probabilities** between the contents present in the training data are already computed and stored in the model
