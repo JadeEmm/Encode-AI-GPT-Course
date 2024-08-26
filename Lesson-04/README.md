@@ -47,6 +47,7 @@ We'll delve deeper into the topic of Text Generation by studying how different `
 ## OpenAI APIs
 
 - API Functionality
+-   Simple explanation of APIs: https://rapidapi.com/blog/api-glossary/api/
   - API calls enable remote execution of operations on servers over the internet, offering several advantages:
     - Leveraging substantial computational power not available on local devices
     - Processing large datasets that exceed local storage capabilities
