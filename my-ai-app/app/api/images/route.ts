@@ -1,21 +1,32 @@
 import OpenAI from "openai";
+import { OpenAIStream, StreamingTextResponse } from "ai";
 
+// Create an OpenAI API client (that's edge friendly!)
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
+// IMPORTANT! Set the runtime to edge
 export const runtime = "edge";
 
 export async function POST(req: Request) {
-  const { message } = await req.json();
-  const prompt = `Generate an image that describes the following recipe: ${message}`;
-  const response = await openai.images.generate({
-    model: "dall-e-2",
-    prompt: prompt.substring(0, Math.min(prompt.length, 1000)),
-    size: "1024x1024",
-    quality: "standard",
-    response_format: "b64_json",
-    n: 1,
+  const { messages } = await req.json();
+
+  // Ask OpenAI for a streaming chat completion given the prompt
+  const response = await openai.chat.completions.create({
+    model: "gpt-4o-mini",
+    stream: true,
+    messages: [
+  {
+    role: 'system',
+    content: 'You are a professional chef. You provide detailed cooking instructions, tips, and advice on selecting the best ingredients.',
+  },
+  ...messages,
+],
   });
-  return new Response(JSON.stringify(response.data[0].b64_json));
+
+  // Convert the response into a friendly text-stream
+  const stream = OpenAIStream(response);
+  // Respond with the stream
+  return new StreamingTextResponse(stream);
 }
