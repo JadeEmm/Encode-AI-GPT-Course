@@ -19,7 +19,7 @@ dish = input("Type the name of the dish you want a recipe for:\n")
 messages.append(
     {
         "role": "user",
-        "content": f"Suggest me a detailed recipe and the preparation steps for making {dish}"
+        "content": f"Suggest a detailed recipe and the preparation steps for making {dish}"
     }
 )
 
